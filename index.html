@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   
+</script>
+    <title>Document</title>
+    <style>
+     
+    body{
+  background-color: rgb(46, 45, 45);
+    cursor: none;
+  }
+  .cursor{
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius:50%;
+    position: absolute;
+    transition-duration: 00ms;
+    transition-timing-function: ease-out;
+    animation: cursoranm .5s infinite alternate;
+  }
+  .cursor::after{
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border: 8px solid rgb(100, 96, 96);
+    border-radius: 50%;
+    opacity: .5;
+    top: -8px;
+    left:-8px;
+    animation: cursoranim2 .5s infinite alternate;
+  }
+
+  @keyframes cursoranim2{
+    from{
+        transform: scale(1);
+    }
+    to{
+    transform: scale(.4);
+    }
+  }
+  
+  @keyframes cursoranm{
+    from{
+        transform: scale(1);
+    }
+    to{
+    transform: scale(.7);
+    }
+    
+  }
+  @keyframes cursoranim3{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+    transform: scale(3);
+    }
+    100%{
+        transform:scale(1) ;
+        opacity: 0;
+    }
+  }
+  .expand{
+    animation: cursoranim3 .5s forwards;
+    border: 2px solid green;
+  }
+    </style>
+   
+</head>
+<body>
+   <div class="cursor"></div>
+</body>
+<script>
+    const cur = document.querySelector('.cursor');
+
+    document.addEventListener('mousemove',e =>{
+       
+        cur.setAttribute("style", "top:" +(e.pageY - 10 )+"px; left:"+(e.pageX -10)+"px;")
+    })
+    document.addEventListener('click',()=> {
+        cur.classList.add("expand");
+        setTimeout(()=> {
+            cur.classList.remove("expand");
+        },500)
+       
+    })
+</script>
+</html>
